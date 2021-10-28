@@ -1,0 +1,31 @@
+.input {
+    width: 342px;
+    height: 34px;
+}
+
+.sendButton {
+    position: relative;
+    top: 8px;
+    width: 40px;
+    height: 40px;
+    padding-top: 4px;
+}
+
+.sendField {
+    position: absolute;
+    top: calc(100vh - 80px);
+    left: calc(50vw - 195px);
+}
+
+.chat {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(21, 22, 27);
+}
+
+.massages {
+    height: calc(100vh - 100px);
+    overflow: auto;
+}
