@@ -13,7 +13,7 @@ function LoggedIn(data) {
 
     const db = firebase.firestore()
 
-    const q = db.collection('massages').orderBy('createdAt', 'desc')
+    const q = db.collection('massages').orderBy('createdAt')
 
     const [massages, loading] = useCollectionData(q)
 
@@ -26,6 +26,18 @@ function LoggedIn(data) {
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
           })
         setMassage('')
+        scrollToBottom()
+    }
+
+    const messagesEnd =  document.getElementById('messagesEnd')
+
+    react.useEffect(() => {
+        const msgEnd = document.getElementById('messagesEnd')
+        msgEnd.scrollIntoView({ behavior: "smooth" })
+    })
+
+    const scrollToBottom = () => {
+        messagesEnd.scrollIntoView({ behavior: "smooth" })
     }
 
     const [massage, setMassage] = react.useState('')
@@ -33,9 +45,9 @@ function LoggedIn(data) {
     return(
         <div className="chat">
             <div className="massages">
-                { !loading ? 
+                {!loading ? 
                     (
-                        massages.reverse().map(msg => 
+                        massages.map(msg => 
                         {
                             if (msg.uid === user.uid) {
                                 return <Recived data={msg}/>
@@ -50,9 +62,10 @@ function LoggedIn(data) {
                         "Загрузка"
                     )
                 }
+                <div id={'messagesEnd'} />
             </div>
             <div className="sendField">
-                <input className="input" value={massage} onChange={(e) => setMassage(e.target.value)}></input>
+                <input className="input" value={massage} onChange={(e) => setMassage(e.target.value)} onKeyUp={(e) => e.key === 'Enter' ? sendMassage() : null}></input>
                 <button className="sendButton" onClick={sendMassage}>
                     <span className="material-icons sendIcon">
                         send

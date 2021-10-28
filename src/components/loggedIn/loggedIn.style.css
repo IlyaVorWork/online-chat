@@ -28,4 +28,5 @@
 .massages {
     height: calc(100vh - 100px);
     overflow: auto;
+    overflow-y: scroll;
 }
