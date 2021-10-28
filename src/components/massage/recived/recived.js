@@ -1,4 +1,3 @@
-import react from 'react'
 import './recived.style.css'
 
 function Recived(data) {
@@ -7,7 +6,7 @@ function Recived(data) {
 
     return(
         <div className="massageRecived">
-            <img className="avatar" src={`${msg.photoURL}`}/>
+            <img className="avatar" alt="avatar" src={`${msg.photoURL}`}/>
             {msg.username}
             <br/>
             {msg.text}

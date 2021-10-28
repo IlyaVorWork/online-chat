@@ -1,4 +1,3 @@
-import react from 'react'
 import './sended.style.css'
 
 function Sended(data) {
@@ -10,7 +9,7 @@ function Sended(data) {
             {msg.username}
             <br/>
             {msg.text}
-            <img className="avatar" src={`${msg.photoURL}`}/>
+            <img className="avatar" alt="avatar" src={`${msg.photoURL}`}/>
         </div>
     )
 }

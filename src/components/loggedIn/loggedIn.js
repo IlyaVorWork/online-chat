@@ -15,7 +15,7 @@ function LoggedIn(data) {
 
     const q = db.collection('massages').orderBy('createdAt', 'desc')
 
-    const [massages, loading, error] = useCollectionData(q)
+    const [massages, loading] = useCollectionData(q)
 
     const sendMassage = async () => {
         await db.collection("massages").add({
